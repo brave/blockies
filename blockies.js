@@ -1,6 +1,12 @@
 (function() {
 	// The random number is a js implementation of the Xorshift PRNG
 	var randseed = new Array(4); // Xorshift: [x, y, z, w] 32 bit values
+	var colors = ['#FB542B',
+								'#4C54D2',
+								'#BD1531',
+								'#FFD43B',
+								'#339AF0',
+								'#12A378'];
 
 	function seedrand(seed) {
 		for (var i = 0; i < randseed.length; i++) {
@@ -24,15 +30,7 @@
 	}
 
 	function createColor() {
-		//saturation is the whole color spectrum
-		var h = Math.floor(rand() * 360);
-		//saturation goes from 40 to 100, it avoids greyish colors
-		var s = ((rand() * 60) + 40) + '%';
-		//lightness can be anything from 0 to 100, but probabilities are a bell curve around 50%
-		var l = ((rand()+rand()+rand()+rand()) * 25) + '%';
-
-		var color = 'hsl(' + h + ',' + s + ',' + l + ')';
-		return color;
+		return colors[Math.floor(rand() * 100) % colors.length];
 	}
 
 	function createImageData(size) {
@@ -99,10 +97,11 @@
 
 				// if data is 2, choose spot color, if 1 choose foreground
 				cc.fillStyle = (imageData[i] == 1) ? opts.color : opts.spotcolor;
-
+				cc.filter = 'blur(17px)';
 				cc.fillRect(col * opts.scale, row * opts.scale, opts.scale, opts.scale);
 			}
 		}
+
 		return canvas;
 	}
 
