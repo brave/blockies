@@ -3,10 +3,10 @@
 	var randseed = new Array(4); // Xorshift: [x, y, z, w] 32 bit values
 	var colors = ['#FB542B',
 								'#4C54D2',
-								'#BD1531',
+								'#CA3BB2',
 								'#FFD43B',
 								'#339AF0',
-								'#12A378'];
+								'#22B8CF'];
 
 	function seedrand(seed) {
 		for (var i = 0; i < randseed.length; i++) {
