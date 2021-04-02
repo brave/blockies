@@ -10,7 +10,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 50%;
-    box-shadow: inset rgba(255, 255, 255, 0.6) 0 2px 2px, inset rgba(0, 0, 0, 0.3) 0 -2px 6px;
     transition: border-radius 2.5s;
     transition-delay: 3s;
   }
@@ -19,9 +18,12 @@
     border-radius: 6.25%;
     transition-delay: 1s;
 }
+html, body {
+  height: 100%;
+}
 </style>
 </head>
-<body>
+<body id="body">
   <div id="squareIcon" class="identicon"></div>
   <div id="roundIcon" class="identicon"></div>
     <!-- Main blockies -->
@@ -32,14 +34,11 @@
     <script type="text/javascript" src="hqx.js"></script>
 
     <script>
-
         var address = '0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359';
         var squareIcon = document.getElementById('squareIcon');
-        squareIcon.style.backgroundImage = 'url(' + blockies.create({ seed:address ,size: 8,scale: 16}).toDataURL()+')'
+        squareIcon.style.backgroundImage = 'url(' + blockies.create({ seed: address, size: 8, scale: 16}).toDataURL()+')'
 
-        // If you want rounded and diagonals
-        var roundIcon = document.getElementById('roundIcon');
-        roundIcon.style.backgroundImage = 'url(' + hqx(blockies.create({ seed:address ,size: 8,scale: 1}),4).toDataURL()+')'
-
+        var background = document.getElementById('body');
+        background.style.background = blockies.background({ seed: address });
     </script>
 </body>

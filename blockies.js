@@ -2,11 +2,11 @@
 	// The random number is a js implementation of the Xorshift PRNG
 	var randseed = new Array(4); // Xorshift: [x, y, z, w] 32 bit values
 	var colors = ['#FB542B',
-								'#4C54D2',
-								'#CA3BB2',
-								'#FFD43B',
-								'#339AF0',
-								'#22B8CF'];
+					'#4C54D2',
+					'#CA3BB2',
+					'#FFD43B',
+					'#339AF0',
+					'#22B8CF'];
 
 	function seedrand(seed) {
 		for (var i = 0; i < randseed.length; i++) {
@@ -113,8 +113,15 @@
 		return canvas;
 	}
 
+	function backgroundColors(opts) {
+		opts = buildOpts(opts || {});
+
+		return '100% 100% linear-gradient(to bottom, ' + opts.bgcolor + ' 0%, ' + opts.spotcolor + ' 100%) no-repeat';
+	}
+
 	var api = {
 		create: createIcon,
+		background: backgroundColors,
 		render: renderIcon
 	};
 
