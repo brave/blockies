@@ -1,7 +1,7 @@
 (function() {
 	// The random number is a js implementation of the Xorshift PRNG
 	var randseed = new Array(4); // Xorshift: [x, y, z, w] 32 bit values
-	var colors = ['#5B5C63', '#000000', '#151E9A', '#2197F9', '#1FC3DC', '#086582', '#67D4B4', '#077D5A', '#3C790B', '#AFCE57', '#F0CB44', '#F28A29', '#FC798F', '#C1226E', '#FAB5EE', '#C0C4FF', '#9677EE', '#5433B0', '#4A000C'];
+	var colors = ['#5B5C63', '#151E9A', '#2197F9', '#1FC3DC', '#086582', '#67D4B4', '#AFCE57', '#F0CB44', '#F28A29', '#FC798F', '#C1226E', '#FAB5EE', '#9677EE', '#5433B0'];
 
 	function seedrand(seed) {
 		for (var i = 0; i < randseed.length; i++) {
