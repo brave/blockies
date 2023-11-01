@@ -75,6 +75,7 @@
 	var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 	svg.setAttribute('width', opts.size * opts.scale);
 	svg.setAttribute('height', opts.size * opts.scale);
+  svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
   
 	var bgRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 	bgRect.setAttribute('width', opts.size * opts.scale);
