@@ -120,6 +120,31 @@
 	return svg;
   }
   
+  function getDominantColor(svgElement) {
+    const colors = {};
+    const elements = svgElement.querySelectorAll('*');
+  
+    elements.forEach(element => {
+      const style = getComputedStyle(element);
+      const fillColor = style.fill;
+  
+      if (fillColor) {
+        colors[fillColor] = (colors[fillColor] || 0) + 1;
+      }
+    });
+  
+    let dominantColor = null;
+    let maxCount = 0;
+  
+    Object.entries(colors).forEach(([color, count]) => {
+      if (count > maxCount) {
+        maxCount = count;
+        dominantColor = color;
+      }
+    });
+  
+    return dominantColor;
+  }
 
   function createIcon(opts) {
     return renderIcon(opts);
@@ -134,7 +159,8 @@
   var api = {
     create: createIcon,
     background: backgroundColors,
-    render: renderIcon
+    render: renderIcon,
+    dominantColor: getDominantColor
   };
 
   if (typeof module !== "undefined") {

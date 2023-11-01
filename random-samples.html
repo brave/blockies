@@ -60,7 +60,10 @@ svg {
             // console.log(blockies.create({ seed:seed ,size: 8,scale: 16}));
             // //image.src = blockies.create({ seed:seed ,size: 8,scale: 16}).toDataURL();
             // icon.appendChild( image );
-            document.body.appendChild(blockies.create({ seed:seed ,size: 8,scale: 16}))
+            const svg = blockies.create({ seed:seed ,size: 8,scale: 16});
+            document.body.appendChild(svg);
+            const dc = blockies.dominantColor(svg);
+            console.log('Dominant color:', dc);
           }
 
         };
