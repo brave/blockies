@@ -27,12 +27,13 @@ canvas {
 } */
 
 
-.icon {
+svg {
   display: inline-block;
   position: relative;
   width: 64px;
   height: 64px;
   margin: 8px;
+  border-radius: 0px;
 }
 
 </style>
@@ -55,15 +56,14 @@ canvas {
           for (i = 0; i < addresses.length; i ++ ){
             var seed = addresses[i].toLowerCase();
 
-            var source = blockies.create({ seed:seed ,size: 8,scale: 1});
-
-            var icon = document.createElement("div");
-            icon.className = "icon";
-
-            var image = document.createElement("img");
-            image.src = blockies.create({ seed:seed ,size: 8,scale: 16}).toDataURL();
-            icon.appendChild( image );
-            document.body.appendChild(icon)
+            // var image = document.createElement("img");
+            // console.log(blockies.create({ seed:seed ,size: 8,scale: 16}));
+            // //image.src = blockies.create({ seed:seed ,size: 8,scale: 16}).toDataURL();
+            // icon.appendChild( image );
+            const svg = blockies.create({ seed:seed ,size: 8,scale: 16});
+            document.body.appendChild(svg);
+            const dc = blockies.dominantColor(svg);
+            console.log('Dominant color:', dc);
           }
 
         };
